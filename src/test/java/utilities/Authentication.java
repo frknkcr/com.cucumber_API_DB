@@ -1,10 +1,12 @@
 package utilities;
 
+import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,4 +39,27 @@ public class Authentication {
 
         return token;
     }
+
+    public static String getToken(){
+
+
+        JSONObject object = new JSONObject();
+
+        object.put("email",ConfigReader.getProperty("email"));
+        object.put("password",ConfigReader.getProperty("password"));
+
+
+        Response response = given().header("Accept","application/json")
+                .when().body(object.toString()).post(ConfigReader.getProperty("tokenUrl"));
+
+
+        System.out.println(response.statusCode());
+
+        JsonPath path = response.jsonPath();
+
+
+        return path.getString("token");
+
+    }
+
 }
