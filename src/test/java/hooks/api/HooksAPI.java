@@ -12,7 +12,7 @@ public class HooksAPI {
     @Before
     public void setupApi(){
 
-    //spec=new RequestSpecBuilder().setBaseUri(ConfigReader.getProperty("nasaBaseUrl")).build();
+    //spec=new RequestSpecBuilder().setBaseUri(ConfigReader.getProperty("baseUrl")).build();
 
 
 }

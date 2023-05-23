@@ -42,24 +42,17 @@ public class Authentication {
 
     public static String getToken(){
 
-
         JSONObject object = new JSONObject();
 
         object.put("email",ConfigReader.getProperty("email"));
         object.put("password",ConfigReader.getProperty("password"));
 
+        Response response = given().when().body(object.toString()).log().body().post(ConfigReader.getProperty("tokenUrl"));
 
-        Response response = given().header("Accept","application/json")
-                .when().body(object.toString()).post(ConfigReader.getProperty("tokenUrl"));
-
-
-        System.out.println(response.statusCode());
-
-        JsonPath path = response.jsonPath();
-
-
-        return path.getString("token");
+        return "Bearer "+response.jsonPath().getString("token");
 
     }
+
+
 
 }
