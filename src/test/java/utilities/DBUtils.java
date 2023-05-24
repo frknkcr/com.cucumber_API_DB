@@ -12,11 +12,11 @@ public class DBUtils {
     private static ResultSet resultSet;
 
     public static void createConnection() {
-        String dbUrl = ConfigReader.getProperty("dbUrl");
-        String dbUsername = ConfigReader.getProperty("dbUsername");
-        String dbPassword = ConfigReader.getProperty("dbPassword");
+        String url="jdbc:mysql://194.140.198.209/heallife_hospitaltraining";
+        String username="heallife_hospitaltraininguser";
+        String password="PI2ZJx@9m^)3";
         try {
-            connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+            connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

@@ -24,13 +24,19 @@ public class CommonDB {
                 "    FROM heallife_hospitaltraining.vehicles\n" +
                 ") AS t2 ON t1.id = t2.id AND t1.rn = t2.rn;";
         try {
-           resultSet= DBUtils.getStatement().executeQuery(query);
+
+            resultSet= DBUtils.getStatement().executeQuery(query);
             resultSet.absolute(0);
-            Assert.assertEquals("team108",resultSet.toString());
+            resultSet.next();
+            String resultString=resultSet.getString(1);
+            System.out.println(resultString);
+            Assert.assertEquals("team108",resultString);
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }
 
+
+
+        }
 
     }
 }
