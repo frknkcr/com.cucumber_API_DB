@@ -34,19 +34,19 @@ public class DBUtils {
     }
 
     public static Statement getStatement() {
-/*
+
 
         String dbUrl = ConfigReader.getProperty("dbUrl");
         String dbUsername = ConfigReader.getProperty("dbUsername");
         String dbPassword = ConfigReader.getProperty("dbPassword");
         try {
-            connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+            connection = DriverManager.getConnection(dbUrl,dbUsername,dbPassword);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
- */
+
         try {
             statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         } catch (SQLException e) {
