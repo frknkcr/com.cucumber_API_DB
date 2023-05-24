@@ -1,6 +1,8 @@
 package stepDefinitions.db;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import utilities.DBUtils;
 
@@ -10,6 +12,7 @@ import java.sql.SQLException;
 public class CommonDB {
 
     ResultSet resultSet;
+    String resultString;
     @Given("Establishes connection with database")
     public void establishes_connection_with_database() {
 
@@ -28,9 +31,9 @@ public class CommonDB {
             resultSet= DBUtils.getStatement().executeQuery(query);
             resultSet.absolute(0);
             resultSet.next();
-            String resultString=resultSet.getString(1);
+            resultString=resultSet.getString(1);
             System.out.println(resultString);
-            Assert.assertEquals("team108",resultString);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
 
@@ -38,5 +41,15 @@ public class CommonDB {
 
         }
 
+    }
+
+    @Then("Sorting the lists confirms that both indexes are in the same order")
+    public void sortingTheListsConfirmsThatBothIndexesAreInTheSameOrder() {
+        Assert.assertEquals("team108",resultString);
+    }
+
+    @And("Database close")
+    public void databaseClose() {
+        DBUtils.closeConnection();
     }
 }
