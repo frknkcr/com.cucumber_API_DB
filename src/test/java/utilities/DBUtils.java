@@ -213,4 +213,21 @@ public class DBUtils {
         int rowCount = resultSet.getRow();
         return rowCount;
     }
+
+    //    used to close the connectivity
+    public static void closeConnection() {
+        try {
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (statement != null) {
+                statement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
