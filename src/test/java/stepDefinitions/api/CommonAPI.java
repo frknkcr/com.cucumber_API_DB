@@ -26,7 +26,9 @@ public class CommonAPI {
         response = RestAssured.given().contentType(ContentType.JSON).when()
                 .headers("Authorization",Authentication.getToken()).get(path);
 
+
         response.prettyPrint();
+
         response.then().assertThat().statusCode(200);
 
 

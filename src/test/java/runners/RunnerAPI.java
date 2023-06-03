@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
         },
         features = "src/test/resources/api",
         glue = {"stepDefinitions/api", "hooks/api"},
-        tags = "@api",
+        tags = "@deneme",
         dryRun = false
 )
 public class RunnerAPI {
